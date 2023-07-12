@@ -1,6 +1,6 @@
 # Travel Planner - South Africa
 
-![Travel Planner Logo](logo.png)
+![Travel Planner Logo](3.png)
 
 Travel Planner is a web application designed to assist users in planning their trips to South Africa. Whether you're a local or a visitor, our app provides valuable information and resources to make your trip unforgettable.
 
