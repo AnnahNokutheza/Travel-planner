@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Planner - South Africa</title>
+  <style>
+    /* CSS styles */
+    body {
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+       background-color: #f2f2f2;
+       background-image: -webkit-image-set('./img/travel-1.jpg');
+     }
+
+     #header {
+       background-color: #ecdf2a;
+       color: #fff;
+       padding: 20px;
+       text-align: center;
+     }
+
+     #header h1 {
+       margin: 0;
+     }
+
+     #navbar {
+      background-color: #ecdf2a;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #navbar ul {
+      list-style-type: none;
+      display: flex;
+    }
+
+    #navbar ul li {
+      margin-right: 20px;
+    }
+
+    #navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+
+     #content {
+       max-width: 800px;
+       margin: 20px auto;
+       padding: 20px;
+       background-color: #fff;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+
+     #attractions {
+       display: flex;
+       flex-wrap: wrap;
+     }
+
+     .attraction {
+       width: 300px;
+       margin: 10px;
+       padding: 20px;
+       background-color: #f2f2f2;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+
+     .attraction h3 {
+       margin-top: 0;
+     }
+
+     .attraction p {
+       margin-bottom: 10px;
+     }
+
+     .attraction img {
+       width: 100%;
+       height: auto;
+       margin-bottom: 10px;
+     }
+
+     #itinerary {
+       margin-top: 20px;
+     }
+
+     .itinerary-item {
+       padding: 10px;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       margin-bottom: 10px;
+       background-color: #fff;
+     }
+
+     .itinerary-item span {
+       margin-right: 10px;
+     }
+
+     #tips {
+       margin-top: 20px;
+     }
+
+     .tip {
+       padding: 10px;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       margin-bottom: 10px;
+       background-color: #fff;
+     }
+     #footer {
+      background-color: #ecdf2a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+
+    <div id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <h1>Travel Planner - South Africa</h1>
+  </div>
+
+  <div id="content">
+    <h2>Popular Attractions</h2>
+    <div id="attractions">
+      <!-- Attractions will be dynamically added here -->
+    </div>
+
+    <h2>Itinerary</h2>
+    <div id="itinerary">
+      <!-- Itinerary items will be dynamically added here -->
+    </div>
+
+    <h2>Travel Tips</h2>
+    <div id="tips">
+      <!-- Travel tips will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code
+
+    // Sample attractions data
+    const attractions = [
+      {
+        name: "Table Mountain",
+        location: "Cape Town",
+        description: "Iconic flat-topped mountain with panoramic views of the city.",
+        contact: {
+          phone: "+27 21 424 8181",
+          email: "info@tablemountain.net",
+        },
+        directions: "Table Mountain National Park, Cape Town, South Africa",
+        image: "img/travel-3.jpg",
+      },
+      {name: "Kruger National Park",
+        location: "Mpumalanga",
+        description: "Huge game reserve known for its abundant wildlife and safaris.",
+        contact: {
+          phone: "+27 13 735 4000",
+          email: "info@sanparks.org",
+        },
+        directions: "Kruger National Park, Mpumalanga, South Africa",
+        image: "img/travel-4.jpg",
+
+      },
+      {name: "Waterford Estate",
+        location: "Stellenbosch",
+        description: "Waterford Estate is situated in the picturesque Blaauwklippen Valley in Stellenbosch.",
+        contact: {
+          phone: "+27(0) 21 880 5300",
+          email: "info@waterfordestate.co.za",
+        },
+        directions: "Blaauwklippen Road, Stellenbosch, South Africa",
+        image: "img/travel-5.jpg",
+
+      },
+      {name: "Robberg Nature Reserve",
+      location: "Stellenbosch",
+      description: "Robberg, situated 8km south of Plettenberg Bay on the Garden Route is not only a nature reserve, but also a World Heritage Site.",
+      contact: {
+        phone: "+27 (0)87 087 3937",
+        email: "reservation.alert@capenature.co.za",
+      },
+      directions: "corner Bosduif and Volstruis streets, Bridgetown, South Africa",
+      image: "img/travel-6.jpg",
+
+    },
+    ];
+
+    // Sample itinerary data
+    const itineraryItems = [
+      {
+        name: "Table Mountain",
+        duration: "Half Day",
+      },
+      {
+        name: "Kruger National Park",
+        duration: "2 Days",
+      },
+      {
+        name: "Waterford Estate",
+        duration: "5 Days",
+      },
+      {
+        name: "Robberg Nature Reserve",
+        duration: "Half Day",
+      },
+    ];
+
+    // Sample travel tips
+    const travelTips = [
+      "Carry sunscreen and a hat.",
+      "Try the local cuisine, such as boerewors and bobotie.",
+      // Add more travel tips here...
+    ];
+
+    // Function to display attractions
+    function displayAttractions() {
+      const attractionsContainer = document.getElementById("attractions");
+
+      attractions.forEach(attraction => {
+        const attractionElement = document.createElement("div");
+        attractionElement.classList.add("attraction");
+
+        const nameElement = document.createElement("h3");
+        nameElement.textContent = attraction.name;
+
+        const locationElement = document.createElement("p");
+        locationElement.textContent = "Location: " + attraction.location;
+
+        const descriptionElement = document.createElement("p");
+        descriptionElement.textContent = attraction.description;
+
+        const contactElement = document.createElement("p");
+        contactElement.textContent = "Contact: " + attraction.contact.phone + " | " + attraction.contact.email;
+
+        const directionsElement = document.createElement("p");
+        directionsElement.textContent = "Directions: " + attraction.directions;
+
+        const imageElement = document.createElement("img");
+        imageElement.src = attraction.image;
+        imageElement.alt = attraction.name;
+
+        attractionElement.appendChild(nameElement);
+        attractionElement.appendChild(locationElement);
+        attractionElement.appendChild(descriptionElement);
+        attractionElement.appendChild(contactElement);
+        attractionElement.appendChild(directionsElement);
+        attractionElement.appendChild(imageElement);
+
+        attractionsContainer.appendChild(attractionElement);
+      });
+    }
+
+    // Function to display itinerary
+    function displayItinerary() {
+      const itineraryContainer = document.getElementById("itinerary");
+
+      itineraryItems.forEach(item => {
+        const itemElement = document.createElement("div");
+        itemElement.classList.add("itinerary-item");
+
+        const nameElement = document.createElement("span");
+        nameElement.textContent = item.name;
+
+        const durationElement = document.createElement("span");
+        durationElement.textContent = "Duration: " + item.duration;
+
+        itemElement.appendChild(nameElement);
+        itemElement.appendChild(durationElement);
+
+        itineraryContainer.appendChild(itemElement);
+      });
+    }
+
+    // Function to display travel tips
+    function displayTravelTips() {
+      const tipsContainer = document.getElementById("tips");
+
+      travelTips.forEach(tip => {
+        const tipElement = document.createElement("div");
+        tipElement.classList.add("tip");
+
+        const tipTextElement = document.createElement("span");
+        tipTextElement.textContent = tip;
+
+        tipElement.appendChild(tipTextElement);
+
+        tipsContainer.appendChild(tipElement);
+      });
+    }
+
+    // Call the display functions
+    displayAttractions();
+    displayItinerary();
+    displayTravelTips();
+  </script>
+  <div id="footer">
+    <p>&copy; 2023 Travel Planner. All rights reserved. | Contact: info@travelplanner.com</p>
+  </div>
+
+</body>
+</html>
