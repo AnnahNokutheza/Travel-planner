@@ -13,9 +13,9 @@ Travel Planner is a web application designed to assist users in planning their t
 
 ## Screenshots
 
-![Attractions](screenshots/attractions.png)
-![Itinerary](screenshots/itinerary.png)
-![Travel Tips](screenshots/travel-tips.png)
+![Attractions](attractions.png)
+![Itinerary](itinerary.png)
+![Travel Tips](travel-tips.png)
 
 ## Technologies Used
 
